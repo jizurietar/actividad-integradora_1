@@ -41,6 +41,19 @@ header {
     flex-wrap: wrap;
 }
 
+/*Formularios mejor diseño */
+
+
+
+input {
+    /*idth: 100%;*/
+    padding: 10px 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border 0.3s;
+}
+
 /* Botones */
 .btn-primary {
     background-color: #4CAF50;
