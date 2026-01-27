@@ -84,7 +84,7 @@ input {
     transform: translateY(-2px);
 }
 
-/*mensajes de error* o la cola vacia*/
+/*mensajes de error o la cola vacia*/
 .empty-message {
     text-align: center;
     padding: 40px 20px;
