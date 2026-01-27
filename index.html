@@ -3,21 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Supermercado</title>
+    <title>Lista del Supermercado</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 <!-- Encabezado principal -->
  <header>
-    <div>
-        <h1>Mi Lista de Supermercado</h1>
+    <div class="container">
+        <h1>Mi Lista del Supermercado</h1>
         <p>Organiza tus compras de manera sencilla</p>
     </div>
 </header>
 <!-- Contenido principal -->
 <main>
-    <div >
-       
+    <div>
+       <section id="add-product-section" class="card">
+        <div class="form-row">
+            <div class="form-group">
+                <label for="product-name">Nombre del Producto:</label>
+                <input type="text" id="product-name" placeholder="Ej: Leche, Pan, Manzanas...">
+                <div class="error-message" id="name-error"></div>
+            </div>
+            <div class="form-group">
+                <label for="product-quantity">Cantidad:</label>
+                <input type="number" id="product-quantity" min="1" value="1">
+                <div class="error-message" id="quantity-error"></div>
+            </div>
+            <button type="submit" id="add-btn" class="btn-primary">
+                <i class="fas fa-plus"></i> Agregar a la Lista
+            </button>
+        </div>
+       </section>
     </div>
 </main>
 <script src="js/script.js" ></script>  
