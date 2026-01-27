@@ -40,3 +40,21 @@ header {
     gap: 20px;
     flex-wrap: wrap;
 }
+
+/* Botones */
+.btn-primary {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    width: auto;
+}
+
+.btn-primary:hover {
+    background-color: #3d8b40;
+    transform: translateY(-2px);
+}
