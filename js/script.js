@@ -6,7 +6,8 @@ const productForm = document.getElementById('product-form');
 const productNameInput = document.getElementById('product-name');
 const productQuantityInput = document.getElementById('product-quantity');
 const productList = document.getElementById('product-list');
-const emptyMessage = document.getElementById('empty-message');
+const emptyMessageName= document.getElementById('empty-message');
+const emptyMessageQuantity  = document.getElementById('empty-message');
 const totalProductsElement = document.getElementById('total-products');
 
 // Mensajes de error

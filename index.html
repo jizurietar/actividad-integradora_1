@@ -25,18 +25,19 @@
                 <div class="form-group">
                     <label for="product-name">Nombre:</label>
                     <input type="text" id="product-name" placeholder="Ej: Leche, Pan, Manzanas..." >
-                    <div class="error-message" id="name-error"></div>
                 </div>
                 <div class="form-group">
                     <label for="product-quantity">Cantidad:</label>
-                    <input type="number" id="product-quantity" min="1" value="1" required>
-                    <div class="error-message" id="quantity-error"></div>
+                    <input type="number" id="product-quantity" min="1" value="1">
                 </div>
                 <button type="submit" id="add-btn" class="btn-primary">
                     +
                 </button>
+            </div>
+             <div class="error-message" id="name-error"></div></ul>
+             <div class="error-message" id="quantity-error"></div>
         </form>
-        </div>
+    </div>
        </section>
        <!-- Sección de la lista de productos -->
         <section id="product-list-section" class="card">
