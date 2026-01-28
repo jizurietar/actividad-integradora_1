@@ -20,21 +20,22 @@
         <!-- Sección del formulario para agregar productos -->
        <section id="add-product-section" class="card">
         <h2>Productos</h2>
-        <div class="form-row">
-            <div class="form-group">
-                <label for="product-name">Nombre:</label>
-                <input type="text" id="product-name" placeholder="Ej: Leche, Pan, Manzanas..." >
-                <div class="error-message" id="name-error"></div>
-            </div>
-            <div class="form-group">
-                <label for="product-quantity">Cantidad:</label>
-                <input type="number" id="product-quantity" min="1" value="1" required>
-                <div class="error-message" id="quantity-error"></div>
-            </div>
-            <button type="submit" id="add-btn" class="btn-primary">
-                +
-            </button>
-            
+        <form id="product-form">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="product-name">Nombre:</label>
+                    <input type="text" id="product-name" placeholder="Ej: Leche, Pan, Manzanas..." >
+                    <div class="error-message" id="name-error"></div>
+                </div>
+                <div class="form-group">
+                    <label for="product-quantity">Cantidad:</label>
+                    <input type="number" id="product-quantity" min="1" value="1" required>
+                    <div class="error-message" id="quantity-error"></div>
+                </div>
+                <button type="submit" id="add-btn" class="btn-primary">
+                    +
+                </button>
+        </form>
         </div>
        </section>
        <!-- Sección de la lista de productos -->
