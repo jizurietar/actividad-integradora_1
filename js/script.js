@@ -6,8 +6,7 @@ const productForm = document.getElementById('product-form');
 const productNameInput = document.getElementById('product-name');
 const productQuantityInput = document.getElementById('product-quantity');
 const productList = document.getElementById('product-list');
-const emptyMessageName= document.getElementById('empty-message');
-const emptyMessageQuantity  = document.getElementById('empty-message');
+const emptyMessage= document.getElementById('empty-message');
 const totalProductsElement = document.getElementById('total-products');
 
 // Mensajes de error
@@ -46,6 +45,17 @@ function validateQuantity() {
     return true;
 }
 
+// Mostrar u ocultar mensaje de lista vacía
+function toggleEmptyMessage() {
+    if (products.length === 0) {
+        emptyMessage.style.display = 'block';
+        productList.style.display = 'none';
+    } else {
+        emptyMessage.style.display = 'none';
+        productList.style.display = 'block';
+    }
+}
+
 // Manejar el envío del formulario
 function handleFormSubmit(event) {
     event.preventDefault();
@@ -74,7 +84,7 @@ function handleFormSubmit(event) {
 
 function initApp() {
     
-     // Configurar evento del formulario
+    // Configurar evento del formulario
     productForm.addEventListener('submit', handleFormSubmit);
     
     // Configurar validación en tiempo real
