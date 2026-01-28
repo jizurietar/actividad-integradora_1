@@ -13,6 +13,11 @@ const totalProductsElement = document.getElementById('total-products');
 const nameError = document.getElementById('name-error');
 const quantityError = document.getElementById('quantity-error');
 
+// Limpiar mensajes de error
+function clearErrors() {
+    nameError.textContent = '';
+    quantityError.textContent = '';
+}
 
 // Validar nombre del producto
 function validateName() {
@@ -56,12 +61,115 @@ function toggleEmptyMessage() {
     }
 }
 
+// Renderizar un elemento de producto
+function renderProductItem(product) {
+    // Crear elemento de lista
+    const listItem = document.createElement('li');
+    listItem.dataset.id = product.id;
+    
+    // Crear contenido del producto
+    listItem.innerHTML = `
+        <div class="product-info">
+            <div class="product-name">${product.name}</div>
+            <div class="product-quantity">Cantidad: ${product.quantity}</div>
+        </div>
+        <div class="product-actions">
+            <button class="action-btn delete-btn" title="Eliminar producto">
+                -
+            </button>
+        </div>
+    `;
+    
+    // Agregar a la lista
+    productList.appendChild(listItem);
+    const deleteBtn = listItem.querySelector('.delete-btn');
+    deleteBtn.addEventListener('click', () => deleteProduct(product.id));
+}
+
+// Eliminar producto
+function deleteProduct(productId) {
+    // Confirmar eliminación
+    if (!confirm('¿Estás seguro de que quieres eliminar este producto?')) {
+        return;
+    }
+    
+    // Filtrar el producto del array
+    products = products.filter(p => p.id !== productId);
+    
+    // Guardar en localStorage
+    saveProductsToStorage();
+    
+    // Actualizar visualización
+    renderProductList();
+    
+    // Mostrar/ocultar mensaje de lista vacía
+    toggleEmptyMessage();
+}
+
+// Renderizar toda la lista de productos
+function renderProductList() {
+    // Limpiar lista actual
+    productList.innerHTML = '';
+    
+    // Renderizar cada producto
+    products.forEach(product => {
+        renderProductItem(product);
+    });
+}
+
+// Guardar productos en localStorage
+function saveProductsToStorage() {
+    localStorage.setItem('shoppingListProducts', JSON.stringify(products));
+}
+
+// Cargar productos desde localStorage
+function loadProductsFromStorage() {
+    const storedProducts = localStorage.getItem('shoppingListProducts');
+    
+    if (storedProducts) {
+        products = JSON.parse(storedProducts);
+        
+        // Encontrar el ID más alto para continuar la numeración
+        if (products.length > 0) {
+            productIdCounter = Math.max(...products.map(p => p.id)) + 1;
+        }
+        
+        // Renderizar los productos cargados
+        renderProductList();
+    }
+}
+
+// Renderizar un elemento de producto
+function renderProductItem(product) {
+    // Crear elemento de lista
+    const listItem = document.createElement('li');
+    listItem.dataset.id = product.id;
+    
+    // Crear contenido del producto
+    listItem.innerHTML = `
+        <div class="product-info">
+            <div class="product-name">${product.name}</div>
+            <div class="product-quantity">Cantidad: ${product.quantity}</div>
+        </div>
+        <div class="product-actions">
+            <button class="action-btn delete-btn" title="Eliminar producto">
+                -
+            </button>
+        </div>
+    `;
+    
+    // Agregar a la lista
+    productList.appendChild(listItem);
+    
+    // Configurar eventos para los botones
+    const deleteBtn = listItem.querySelector('.delete-btn');
+    deleteBtn.addEventListener('click', () => deleteProduct(product.id));
+}
+
 // Manejar el envío del formulario
 function handleFormSubmit(event) {
     event.preventDefault();
     
-    console.log('init');
-
     // Validar formulario
     const isNameValid = validateName();
     const isQuantityValid = validateQuantity();
@@ -80,10 +188,35 @@ function handleFormSubmit(event) {
         name: productName,
         quantity: productQuantity,
     };
+
+    // Agregar producto al array
+    products.push(newProduct);
+
+    // Guardar en localStorage
+    saveProductsToStorage();
+
+    // Renderizar el producto en la lista
+    renderProductItem(newProduct);
+
+    // Mostrar/ocultar mensaje de lista vacía
+    toggleEmptyMessage();
+    
+    // Limpiar formulario
+    productForm.reset();
+    productQuantityInput.value = 1;
+
+    // Limpiar mensajes de error
+    clearErrors();
 }
 
 function initApp() {
     
+    // Cargar productos desde localStorage
+    loadProductsFromStorage();
+
+    // Mostrar/ocultar mensaje de lista vacía
+    toggleEmptyMessage();
+
     // Configurar evento del formulario
     productForm.addEventListener('submit', handleFormSubmit);
     
