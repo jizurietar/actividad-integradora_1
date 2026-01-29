@@ -5,7 +5,7 @@ let productIdCounter = 1;
 const productForm = document.getElementById('product-form');
 const productNameInput = document.getElementById('product-name');
 const productQuantityInput = document.getElementById('product-quantity');
-const productList = document.getElementById('product-list');
+const productList = document.getElementById('product-table-body');
 const emptyMessage= document.getElementById('empty-message');
 const totalProductsElement = document.getElementById('total-products');
 
@@ -59,31 +59,6 @@ function toggleEmptyMessage() {
         emptyMessage.style.display = 'none';
         productList.style.display = 'block';
     }
-}
-
-// Renderizar un elemento de producto
-function renderProductItem(product) {
-    // Crear elemento de lista
-    const listItem = document.createElement('li');
-    listItem.dataset.id = product.id;
-    
-    // Crear contenido del producto
-    listItem.innerHTML = `
-        <div class="product-info">
-            <div class="product-name">${product.name}</div>
-            <div class="product-quantity">Cantidad: ${product.quantity}</div>
-        </div>
-        <div class="product-actions">
-            <button class="action-btn delete-btn" title="Eliminar producto">
-                -
-            </button>
-        </div>
-    `;
-    
-    // Agregar a la lista
-    productList.appendChild(listItem);
-    const deleteBtn = listItem.querySelector('.delete-btn');
-    deleteBtn.addEventListener('click', () => deleteProduct(product.id));
 }
 
 // Eliminar producto
@@ -142,22 +117,24 @@ function loadProductsFromStorage() {
 // Renderizar un elemento de producto
 function renderProductItem(product) {
     // Crear elemento de lista
-    const listItem = document.createElement('li');
+    const listItem = document.createElement('tr');
     listItem.dataset.id = product.id;
     
     // Crear contenido del producto
     listItem.innerHTML = `
-        <div class="product-info">
+        <td class="product-name-cell">
             <div class="product-name">${product.name}</div>
+        </td>
+        <td class="product-quantity-cell">
             <div class="product-quantity">Cantidad: ${product.quantity}</div>
-        </div>
-        <div class="product-actions">
-            <button class="action-btn delete-btn" title="Eliminar producto">
+        </td>
+        <td class="product-actions-cell">
+            <button class="action-btn delete-btn" title="Eliminar producto" data-id="${product.id}">
                 -
             </button>
-        </div>
+        </td>
     `;
-    
+    console.log(listItem);
     // Agregar a la lista
     productList.appendChild(listItem);
     

@@ -44,13 +44,25 @@
        <!-- Sección de la lista de productos -->
         <section id="product-list-section" class="card">
             <h2>Lista de Productos</h2>
+            <!-- Lista de productos (se llena dinámicamente) -->
+            <table id="product-table" class="product-table">
+                <thead>
+                    <tr>
+                        <th class="table-header">Producto</th>
+                        <th class="table-header">Cantidad</th>
+                        <th class="table-header">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="product-table-body">
+                    <!-- Las filas se insertarán aquí dinámicamente -->
+                </tbody>
+            </table>
             <!-- Mensaje cuando no hay productos -->
             <div id="empty-message" class="empty-message">
                 <p>Tu lista de supermercado está vacía</p>
                 <p>¡Agrega algunos productos para comenzar!</p>
             </div>
-            <!-- Lista de productos (se llena dinámicamente) -->
-            <ul id="product-list"></ul>
+
         </section>
          <!-- Sección de estadísticas -->
         <section id="total-section" class="cardtotal">
