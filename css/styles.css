@@ -110,21 +110,23 @@ input {
     min-height: 10px;
 }
 
-* Tabla de productos */
+/*Tabla de productos */
+
 .product-table {
     width: 100%;
-    border-collapse: collapse;
+    border-collapse: separate;
     margin-top: 20px;
-    display: none; /* Ocultar por defecto, mostrar cuando haya productos */
 }
+
 
 .product-table.show {
     display: table; /* Mostrar cuando tenga productos */
 }
 
+
 .table-header {
-    padding: 12px 15px;
-    text-align: left;
+    padding: 2px 5px;
+    text-align: center;
     font-weight: 600;
     color: #555;
     border-bottom: 2px solid #4CAF50;
@@ -148,15 +150,15 @@ input {
 /* Celdas de la tabla */
 .product-name-cell {
     padding: 12px 15px;
-    vertical-align: middle;
-    width: 50%; /* Ajusta según tu diseño */
+    vertical-align: center;
+    width: auto; /* Ajusta según tu diseño */
 }
 
 .product-quantity-cell {
     padding: 12px 15px;
     vertical-align: middle;
     text-align: center;
-    width: 30%; /* Ajusta según tu diseño */
+    width: auto; /* Ajusta según tu diseño */
 }
 
 .product-actions-cell {
@@ -186,16 +188,6 @@ input {
     display: inline-block;
 }
 
-/* Estilos para el mensaje vacío */
-.empty-message {
-    text-align: center;
-    padding: 40px 20px;
-    color: #777;
-}
-
-.empty-message.hide {
-    display: none;
-}
 
 /* Botones (tus estilos existentes) */
 .action-btn {

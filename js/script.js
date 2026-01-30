@@ -57,7 +57,7 @@ function toggleEmptyMessage() {
         productList.style.display = 'none';
     } else {
         emptyMessage.style.display = 'none';
-        productList.style.display = 'block';
+        productList.style.display = 'contents';
     }
 }
 
@@ -118,15 +118,16 @@ function loadProductsFromStorage() {
 function renderProductItem(product) {
     // Crear elemento de lista
     const listItem = document.createElement('tr');
-    listItem.dataset.id = product.id;
+    listItem.className = 'product-row';
+    listItem.id = product.id;
     
     // Crear contenido del producto
     listItem.innerHTML = `
         <td class="product-name-cell">
             <div class="product-name">${product.name}</div>
         </td>
-        <td class="product-quantity-cell">
-            <div class="product-quantity">Cantidad: ${product.quantity}</div>
+       <td class="product-quantity-cell">
+            <div class="product-quantity">${product.quantity}</div>
         </td>
         <td class="product-actions-cell">
             <button class="action-btn delete-btn" title="Eliminar producto" data-id="${product.id}">
@@ -134,13 +135,14 @@ function renderProductItem(product) {
             </button>
         </td>
     `;
-    console.log(listItem);
+
     // Agregar a la lista
     productList.appendChild(listItem);
     
     // Configurar eventos para los botones
     const deleteBtn = listItem.querySelector('.delete-btn');
     deleteBtn.addEventListener('click', () => deleteProduct(product.id));
+    console.log(productList)
 }
 
 // Manejar el envío del formulario

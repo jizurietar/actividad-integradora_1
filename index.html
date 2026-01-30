@@ -18,28 +18,27 @@
 <main>
     <div>
         <!-- Sección del formulario para agregar productos -->
-       <section id="add-product-section" class="card">
-        <h2>Productos</h2>
-        <form id="product-form">
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="product-name">Nombre:</label>
-                    <input type="text" id="product-name" placeholder="Ej: Leche, Pan, Manzanas..." >
+        <section id="add-product-section" class="card">
+            <h2>Productos</h2>
+            <form id="product-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="product-name">Nombre:</label>
+                        <input type="text" id="product-name" placeholder="Ej: Leche, Pan, Manzanas..." >
+                    </div>
+                    <div class="form-group">
+                        <label for="product-quantity">Cantidad:</label>
+                        <input type="number" id="product-quantity" min="1" value="1">
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" id="add-btn" class="btn-primary">
+                            +
+                        </button>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="product-quantity">Cantidad:</label>
-                    <input type="number" id="product-quantity" min="1" value="1">
-                </div>
-                <div class="form-group">
-                    <button type="submit" id="add-btn" class="btn-primary">
-                        +
-                    </button>
-                </div>
-            </div>
-             <div class="error-message" id="name-error"></div></ul>
-             <div class="error-message" id="quantity-error"></div>
-        </form>
-    </div>
+                <div class="error-message" id="name-error"></div></ul>
+                <div class="error-message" id="quantity-error"></div>
+            </form>
        </section>
        <!-- Sección de la lista de productos -->
         <section id="product-list-section" class="card">
@@ -53,7 +52,7 @@
                         <th class="table-header">Acciones</th>
                     </tr>
                 </thead>
-                <tbody id="product-table-body">
+                <tbody id="product-table-body" style="display: contents;">
                     <!-- Las filas se insertarán aquí dinámicamente -->
                 </tbody>
             </table>
