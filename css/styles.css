@@ -52,6 +52,12 @@ main {
    margin-bottom: 0px;
    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
    text-align: right;
+   
+}
+
+.cardtotal input {
+   text-align: right;
+   max-width: 70px;
 }
 
 /*alinea todos los objetos en una sola linea*/
@@ -64,7 +70,6 @@ main {
 
 /*Formularios mejor diseño */
 input {
-    /*idth: 100%;*/
     padding: 10px 10px;
     border: 1px solid #ddd;
     border-radius: 6px;
@@ -111,7 +116,6 @@ input {
 }
 
 /*Tabla de productos */
-
 .product-table {
     width: 100%;
     border-collapse: separate;
@@ -158,13 +162,13 @@ input {
     padding: 12px 15px;
     vertical-align: middle;
     text-align: center;
-    width: auto; /* Ajusta según tu diseño */
+    width: 20%; /* Ajusta según tu diseño */
 }
 
 .product-actions-cell {
     padding: 12px 15px;
     vertical-align: middle;
-    text-align: right;
+    text-align: center;
     width: 20%; /* Ajusta según tu diseño */
 }
 
@@ -178,14 +182,11 @@ input {
 }
 
 .product-quantity {
-    color: #4CAF50;
     font-weight: 600;
-    background-color: rgba(76, 175, 80, 0.1);
-    padding: 6px 12px;
-    border-radius: 4px;
-    font-size: 0.9rem;
+    font-size: 1.1rem;
     white-space: nowrap;
-    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 

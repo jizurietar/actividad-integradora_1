@@ -1,13 +1,14 @@
 // Variables globales
 let products = [];
 let productIdCounter = 1;
+let total = 0;
 
 const productForm = document.getElementById('product-form');
 const productNameInput = document.getElementById('product-name');
 const productQuantityInput = document.getElementById('product-quantity');
 const productList = document.getElementById('product-table-body');
 const emptyMessage= document.getElementById('empty-message');
-const totalProductsElement = document.getElementById('total-products');
+const elementtotalQuantity = document.getElementById('total-products');
 
 // Mensajes de error
 const nameError = document.getElementById('name-error');
@@ -61,6 +62,12 @@ function toggleEmptyMessage() {
     }
 }
 
+/*sirve para sacar el total de los productos*/
+function updateTotalQuantity(){
+    elementtotalQuantity.value = 0;
+    const totalQuantity = products.reduce((sum, producto) => sum + producto.quantity, 0);
+    elementtotalQuantity.value = totalQuantity;
+}
 // Eliminar producto
 function deleteProduct(productId) {
     // Confirmar eliminación
@@ -77,6 +84,9 @@ function deleteProduct(productId) {
     // Actualizar visualización
     renderProductList();
     
+    //Actualiza el total
+    updateTotalQuantity();
+
     // Mostrar/ocultar mensaje de lista vacía
     toggleEmptyMessage();
 }
@@ -85,7 +95,7 @@ function deleteProduct(productId) {
 function renderProductList() {
     // Limpiar lista actual
     productList.innerHTML = '';
-    
+
     // Renderizar cada producto
     products.forEach(product => {
         renderProductItem(product);
@@ -142,7 +152,6 @@ function renderProductItem(product) {
     // Configurar eventos para los botones
     const deleteBtn = listItem.querySelector('.delete-btn');
     deleteBtn.addEventListener('click', () => deleteProduct(product.id));
-    console.log(productList)
 }
 
 // Manejar el envío del formulario
@@ -177,6 +186,9 @@ function handleFormSubmit(event) {
     // Renderizar el producto en la lista
     renderProductItem(newProduct);
 
+     //Actualiza el total
+    updateTotalQuantity();
+
     // Mostrar/ocultar mensaje de lista vacía
     toggleEmptyMessage();
     
@@ -192,6 +204,9 @@ function initApp() {
     
     // Cargar productos desde localStorage
     loadProductsFromStorage();
+
+    //Actualiza el total
+    updateTotalQuantity();
 
     // Mostrar/ocultar mensaje de lista vacía
     toggleEmptyMessage();
