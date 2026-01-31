@@ -77,7 +77,6 @@ function updateTotalQuantity(){
         }else{
             pending = pending + 1
         }
-        console.log(elemento);
     });
     pendingProducts.value= pending;
     completedProducts.value = complete;
@@ -182,7 +181,7 @@ function renderProductItem(product) {
             <div class="product-quantity">${product.quantity}</div>
         </td>
         <td class="product-actions-cell">
-            <button class="action-btn complete-btn" title="Pendiente" data-id="${product.id}">
+            <button class="action-btn complete-btn" title="${product.completed ? 'Deshacer' : 'Comprar'}" data-id="${product.id}">
                 ${product.completed ? 'Deshacer' : 'Comprar'}
             </button>
             <button class="action-btn delete-btn" title="Eliminar" data-id="${product.id}">
