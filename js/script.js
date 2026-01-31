@@ -9,6 +9,8 @@ const productQuantityInput = document.getElementById('product-quantity');
 const productList = document.getElementById('product-table-body');
 const emptyMessage= document.getElementById('empty-message');
 const elementtotalQuantity = document.getElementById('total-products');
+const pendingProducts = document.getElementById('pending-products');
+const completedProducts = document.getElementById('completed-products');
 
 // Mensajes de error
 const nameError = document.getElementById('name-error');
@@ -62,12 +64,52 @@ function toggleEmptyMessage() {
     }
 }
 
-/*sirve para sacar el total de los productos*/
+/*Sirve para sacar el total de los productos*/
 function updateTotalQuantity(){
-    elementtotalQuantity.value = 0;
-    const totalQuantity = products.reduce((sum, producto) => sum + producto.quantity, 0);
-    elementtotalQuantity.value = totalQuantity;
+
+    let complete = 0;
+    let pending = 0;
+    let total = 0;
+    products.forEach((elemento, indice) => {
+        total = total + elemento.quantity
+        if (elemento.completed){
+            complete = complete + 1
+        }else{
+            pending = pending + 1
+        }
+        console.log(elemento);
+    });
+    pendingProducts.value= pending;
+    completedProducts.value = complete;
+    elementtotalQuantity.value = total;
+
+    //const totalQuantity = products.reduce((sum, producto) => sum + producto.quantity, 0);
+    //elementtotalQuantity.value = totalQuantity;
 }
+
+//Comprar producto
+function completeProduct(productId){
+    
+    const productIndex = products.findIndex(p => p.id === productId);
+
+    if (productIndex !== -1 )
+        products[productIndex].completed = !products[productIndex].completed;
+
+
+      // Guardar en localStorage
+    saveProductsToStorage();
+    
+    // Actualizar visualización
+    renderProductList();
+    
+    //Actualiza el total
+    updateTotalQuantity();
+
+    // Mostrar/ocultar mensaje de lista vacía
+    toggleEmptyMessage();
+}
+
+
 // Eliminar producto
 function deleteProduct(productId) {
     // Confirmar eliminación
@@ -140,8 +182,11 @@ function renderProductItem(product) {
             <div class="product-quantity">${product.quantity}</div>
         </td>
         <td class="product-actions-cell">
-            <button class="action-btn delete-btn" title="Eliminar producto" data-id="${product.id}">
-                -
+            <button class="action-btn complete-btn" title="Pendiente" data-id="${product.id}">
+                ${product.completed ? 'Deshacer' : 'Comprar'}
+            </button>
+            <button class="action-btn delete-btn" title="Eliminar" data-id="${product.id}">
+                Eliminar
             </button>
         </td>
     `;
@@ -152,6 +197,10 @@ function renderProductItem(product) {
     // Configurar eventos para los botones
     const deleteBtn = listItem.querySelector('.delete-btn');
     deleteBtn.addEventListener('click', () => deleteProduct(product.id));
+
+    const completedBtn = listItem.querySelector('.complete-btn');
+    completedBtn.addEventListener('click', () => completeProduct(product.id));
+
 }
 
 // Manejar el envío del formulario
@@ -175,6 +224,7 @@ function handleFormSubmit(event) {
         id: productIdCounter++,
         name: productName,
         quantity: productQuantity,
+        completed: false
     };
 
     // Agregar producto al array

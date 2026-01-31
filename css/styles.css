@@ -169,7 +169,7 @@ input {
     padding: 12px 15px;
     vertical-align: middle;
     text-align: center;
-    width: 20%; /* Ajusta según tu diseño */
+    width: 40%; /* Ajusta según tu diseño */
 }
 
 /* Contenido de las celdas */
@@ -192,13 +192,13 @@ input {
 
 /* Botones (tus estilos existentes) */
 .action-btn {
-    background: none;
+    
     border: none;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
+    width: 80px;
+    height: 30px;
+    border-radius: 10%;
     cursor: pointer;
-    font-size: 1.1rem;
+    font-size: 0.8rem;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -206,10 +206,21 @@ input {
 }
 
 .delete-btn {
-    color: #e74c3c;
-    border: 2px solid #e74c3c;
+    background: #e74c3c;
+    color: black;
 }
 
 .delete-btn:hover {
-    background-color: rgba(231, 76, 60, 0.1);
+    background-color: #c0392b;
 }
+
+
+.complete-btn {
+    background: #3498db;
+    color: black;
+}
+
+.complete-btn:hover {
+    background-color: #2980b9;
+}
+
