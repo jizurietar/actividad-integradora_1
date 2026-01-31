@@ -1,7 +1,6 @@
 # actividad-integradora_1
 ACTIVIDAD INTEGRADORA 1
 
-El código fue adaptado, modificado y entendido por mí.
 # Lista de Supermercado - Aplicación Web
 
 Aplicación web sencilla para gestionar una lista de compras del supermercado.
@@ -39,5 +38,6 @@ Aplicación web sencilla para gestionar una lista de compras del supermercado.
 - `script.js` - Funcionalidad de la aplicación
 
 # Usó IA
+El código fue adaptado, modificado y entendido por mí.
 Para mejorar la experiencia visual, implementé un diseño con CSS.
 Centré la aplicación en una tarjeta central con efectos :hover y :focus para mejorar la interacción. Los estados de productos (comprados/pendientes) se diferencian claramente con colores y estilos específicos para máxima legibilidad.
